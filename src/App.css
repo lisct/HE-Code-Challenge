@@ -1,0 +1,142 @@
+/**
+ * Styles 
+ * * html is set to 62.5% so that all the REM measurements throughout Skeleton are         based on 10px sizing. So basically 1.5rem = 15px :) 
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,700&display=swap');
+
+html{ font-size: 62.5% }
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Nunito', sans-serif; 
+}
+
+/* GRID */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas:
+      'header'
+      'container';
+    height: 100vh;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 850px;
+}
+
+/* HEADER */
+
+.header__wrapper{
+    background: white;
+    border-bottom: 0.3rem solid #3A3737;
+}
+
+.header{
+    align-items: center;
+    display: flex;
+    grid-area: header;
+    justify-content: space-between;
+    padding: 1.6rem; 
+    letter-spacing: 0.05em;
+    color: #3A3737;
+}
+
+.header__date,
+.header__user{
+    font-size: 1.4em;
+}
+
+.header__tittle{
+    font-weight: 700;
+    font-size: 3.4em;
+    text-transform: uppercase;
+}
+
+.header__date,
+.header__user { display: none }
+
+/* HAMBURGUER MENU */
+
+.menu-icon {
+    align-items: center;
+    background-color: #DADAE3;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 1.2em;
+    position: fixed;
+    right: 1em;
+    top: 0.5em;
+    z-index: 1;
+}
+
+/* MAIN */
+
+.main{
+    background: no-repeat;
+    background-image: url('/images/Mobile\ \(>375\)\ Background.jpg');
+    background-size: cover;
+    padding: 1.6rem;
+}
+
+/* FORM */
+
+.form{
+    background-color: white;
+    margin: 0 auto; 
+    max-width: 490px;
+}
+
+.form__header{ text-align: center }
+
+.form__title{
+    font-size: 1.8em;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.form__divider{
+    width: 6.4em;
+}
+
+.form__divider .cls-1 {
+    fill: #3a3737;
+    fill-rule: evenodd;
+}
+.form__required{
+    color: #949494;
+    font-size: 1.1em;
+}
+
+.form__input-label{}
+.form__input-field{}
+
+/*RESPONSIVE */
+
+/* Non-mobile styles, >375px breakpoint */
+@media only screen and (min-width: 375px) {
+    .menu-icon { display: none }
+
+    .header__date,
+    .header__user { display: block }
+}
+
+/* Tablet */
+@media only screen and (min-width: 760px) {
+    .main{ background-image: url('/images/Tablet\ \(>760\)\ Background.jpg') }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1220px) {
+    .main{ background-image: url('/images/Desktop\ \(>1220\)\ Background.jpg'); }
+}
+
+
