@@ -22,3 +22,13 @@ Static Zip Code list: 57001, 57002, 57003, 57004, 57005, 57006, 57007, 57010, 57
 Form input validations must be written client-side, using both HTML5 & JS. This is for cross-browser capabilities.
 Each requirement, when not fulfilled, will prompt an individual error validation message.
 On successful submission, existing users plus the new user in alphabetical order.
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+### `npm test`
+
+### `npm run build`
