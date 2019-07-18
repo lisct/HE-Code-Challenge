@@ -3,140 +3,339 @@
  * * html is set to 62.5% so that all the REM measurements throughout Skeleton are         based on 10px sizing. So basically 1.5rem = 15px :) 
 */
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:300,700&display=swap');
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
 
-html{ font-size: 62.5% }
+/* GENERAL */
 
-body{
-    padding: 0;
-    margin: 0;
-    font-family: 'Nunito', sans-serif; 
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,700&display=swap");
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*:focus {
+  outline: none;
+}
+
+input {
+  background: none;
+  border: none;
+  height: 2.4em;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+input:focus {
+  background: white;
+}
+
+abbr[title] {
+  border-bottom: none;
+  cursor: inherit;
+  text-decoration: none;
+  font-size: 2em;
 }
 
 /* GRID */
 
 .grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 100px 1fr;
-    grid-template-areas:
-      'header'
-      'container';
-    height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr;
+  grid-template-areas:
+    "header"
+    "container";
+  height: 100vh;
 }
 
-.container{
-    margin: 0 auto;
-    max-width: 850px;
+.container {
+  margin: 0 auto;
+  max-width: 950px;
 }
 
 /* HEADER */
 
-.header__wrapper{
-    background: white;
-    border-bottom: 0.3rem solid #3A3737;
+.header__wrapper {
+  background: white;
+  border-bottom: 0.3rem solid #3a3737;
+  position: relative;
 }
 
-.header{
-    align-items: center;
-    display: flex;
-    grid-area: header;
-    justify-content: space-between;
-    padding: 1.6rem; 
-    letter-spacing: 0.05em;
-    color: #3A3737;
-}
-
-.header__date,
-.header__user{
-    font-size: 1.4em;
-}
-
-.header__tittle{
-    font-weight: 700;
-    font-size: 3.4em;
-    text-transform: uppercase;
+.header {
+  align-items: center;
+  display: flex;
+  grid-area: header;
+  justify-content: space-between;
+  padding: 1.6rem;
+  letter-spacing: 0.05em;
+  color: #3a3737;
+  height: 100px;
 }
 
 .header__date,
-.header__user { display: none }
+.header__user {
+  font-size: 1.4em;
+}
+
+.header__tittle {
+  font-weight: 700;
+  font-size: 2.2em;
+  text-transform: uppercase;
+}
+
+.header__date,
+.header__user {
+  display: none;
+}
 
 /* HAMBURGUER MENU */
-
 .menu-icon {
-    align-items: center;
-    background-color: #DADAE3;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    padding: 1.2em;
-    position: fixed;
-    right: 1em;
-    top: 0.5em;
-    z-index: 1;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 21px;
+  justify-content: center;
+  padding: 1.4em 2em;
+  position: absolute;
+  right: 1.6em;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+}
+
+.menu-icon .icon__line-a:before,
+.menu-icon .icon__line-b:before,
+.menu-icon .icon__line-c:before {
+  content: "";
+  background-color: #3a3737;
+  height: 5px;
+  position: absolute;
+  right: 0;
+  margin: auto;
+  width: 100%;
+}
+
+.menu-icon .icon__line-a:before {
+  top: 0;
+}
+.menu-icon .icon__line-b:before {
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+.menu-icon .icon__line-c:before {
+  bottom: 0;
 }
 
 /* MAIN */
 
-.main{
-    background: no-repeat;
-    background-image: url('/images/Mobile\ \(>375\)\ Background.jpg');
-    background-size: cover;
-    padding: 1.6rem;
+.main {
+  background: no-repeat;
+  background-image: url("/images/Mobile\ \(>375\)\ Background.jpg");
+  background-size: cover;
+  padding: 1.6rem;
 }
 
 /* FORM */
 
-.form{
-    background-color: white;
-    margin: 0 auto; 
-    max-width: 490px;
+.form {
+  background-color: white;
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 5em 0;
 }
 
-.form__header{ text-align: center }
-
-.form__title{
-    font-size: 1.8em;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+.form__header {
+  text-align: center;
 }
 
-.form__divider{
-    width: 6.4em;
+.form__title {
+  font-size: 1.8em;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.form__divider {
+  width: 6.4em;
 }
 
 .form__divider .cls-1 {
-    fill: #3a3737;
-    fill-rule: evenodd;
+  fill: #3a3737;
+  fill-rule: evenodd;
 }
-.form__required{
-    color: #949494;
-    font-size: 1.1em;
+.form__required {
+  color: #949494;
+  font-size: 1.1em;
 }
 
-.form__input-label{}
-.form__input-field{}
+.form__input-container {
+  color: #949494;
+  font-size: 1.3rem;
+  padding: 0 3rem;
+}
+
+.form__input-container {
+  margin-top: 2.6em;
+}
+
+.form__input-items {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form__subtitle {
+  display: flex;
+
+  font-size: 1.4em;
+}
+
+.form__subtitle,
+.form__input-label {
+  font-weight: 700;
+}
+
+.form__input-label {
+  background-color: white;
+  position: absolute;
+  padding-left: 4px;
+  text-transform: uppercase;
+  top: -19px;
+  left: 5px;
+}
+
+/* Ridio Input */
+
+.form__input-label-rc {
+  display: block;
+  position: relative;
+  padding: 0 29px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1.2em;
+  line-height: 1.5em;
+  text-transform: capitalize;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  border: 1px solid #949494;
+  border-radius: 50%;
+}
+
+input:checked ~ .checkmark {
+  background-color: #3a3737;
+  border: 1px solid #3a3737;
+}
+
+input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.form__inline {
+  display: flex;
+  align-items: center;
+}
+
+.form__input-field {
+  border: 1px solid #949494;
+  border-radius: 0.3rem;
+}
+
+.form__input-notes {
+  text-align: left;
+  margin-bottom: 1.8em;
+}
+
+p.form__notes-func {
+  text-transform: uppercase;
+}
+
+p.form__notes-desc,
+p.form__notes-func {
+  margin: 0.2em 0;
+}
 
 /*RESPONSIVE */
 
 /* Non-mobile styles, >375px breakpoint */
-@media only screen and (min-width: 375px) {
-    .menu-icon { display: none }
+@media only screen and (min-width: 415px) {
+  .menu-icon {
+    display: none;
+  }
 
-    .header__date,
-    .header__user { display: block }
+  .header__date,
+  .header__user {
+    display: block;
+  }
+
+  .header__tittle {
+    font-size: 3.4em;
+  }
+
+  .form__input-notes {
+    text-align: right;
+    margin-bottom: 0;
+  }
+
+  .form__input-container {
+    padding: 0 5rem;
+  }
 }
 
 /* Tablet */
 @media only screen and (min-width: 760px) {
-    .main{ background-image: url('/images/Tablet\ \(>760\)\ Background.jpg') }
+  .main {
+    background-image: url("/images/Tablet\ \(>760\)\ Background.jpg");
+  }
 }
 
 /* Desktop */
 @media only screen and (min-width: 1220px) {
-    .main{ background-image: url('/images/Desktop\ \(>1220\)\ Background.jpg'); }
+  .main {
+    background-image: url("/images/Desktop\ \(>1220\)\ Background.jpg");
+  }
 }
-
-
