@@ -22,8 +22,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Nunito", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  /* -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; */
 }
 
 *:focus {
@@ -33,7 +33,9 @@ body {
 input {
   background: none;
   border: none;
-  height: 2.4em;
+  height: 2.6em;
+  padding: 0 1.4em;
+  font-size: 1.2em;
 }
 
 input[type="text"] {
@@ -159,6 +161,9 @@ abbr[title] {
   margin: 0 auto;
   max-width: 640px;
   padding: 5em 0;
+  -webkit-box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.25);
 }
 
 .form__header {
@@ -166,7 +171,7 @@ abbr[title] {
 }
 
 .form__title {
-  font-size: 1.8em;
+  font-size: 2.3em;
   font-weight: 300;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -180,10 +185,16 @@ abbr[title] {
   fill: #3a3737;
   fill-rule: evenodd;
 }
+.form__required abbr {
+  font-size: 1.7em;
+}
+
 .form__required {
   color: #949494;
-  font-size: 1.1em;
+  font-size: 1.3em;
 }
+
+/* Inputs */
 
 .form__input-container {
   color: #949494;
@@ -201,17 +212,6 @@ abbr[title] {
   align-items: center;
 }
 
-.form__subtitle {
-  display: flex;
-
-  font-size: 1.4em;
-}
-
-.form__subtitle,
-.form__input-label {
-  font-weight: 700;
-}
-
 .form__input-label {
   background-color: white;
   position: absolute;
@@ -221,7 +221,50 @@ abbr[title] {
   left: 5px;
 }
 
-/* Ridio Input */
+.form__inline {
+  display: flex;
+  align-items: center;
+}
+
+.form__input-field {
+  border: 2px solid #949494;
+  border-radius: 0.3rem;
+}
+
+.form__input-notes {
+  text-align: left;
+  margin-bottom: 1.8em;
+}
+
+p.form__notes-func {
+  text-transform: uppercase;
+}
+
+p.form__notes-desc,
+p.form__notes-func {
+  margin: 0.2em 0;
+}
+
+.form__subtitle,
+.form__input-label {
+  font-weight: 700;
+}
+
+.form__subtitle {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.9em;
+}
+
+.form__subtitle abbr {
+  font-size: 1.8em;
+}
+
+.form__input-subtitle {
+  margin-top: 1.6em;
+}
+
+/* Radio & Checkbox Input */
 
 .form__input-label-rc {
   display: block;
@@ -238,6 +281,7 @@ abbr[title] {
   user-select: none;
 }
 
+input[type="checkbox"],
 input[type="radio"] {
   position: absolute;
   opacity: 0;
@@ -251,22 +295,31 @@ input[type="radio"] {
   height: 22px;
   width: 22px;
   border: 1px solid #949494;
-  border-radius: 50%;
-}
-
-input:checked ~ .checkmark {
-  background-color: #3a3737;
-  border: 1px solid #3a3737;
-}
-
-input:checked ~ .checkmark:after {
-  display: block;
 }
 
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
+}
+
+input[type="checkbox"]:checked ~ .checkmark:after,
+input[type="radio"]:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Radio Input */
+
+.checkmark--radio {
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked ~ .checkmark--radio {
+  background-color: #3a3737;
+  border: 1px solid #3a3737;
+}
+
+.checkmark--radio:after {
   top: 6px;
   left: 6px;
   width: 8px;
@@ -275,28 +328,70 @@ input:checked ~ .checkmark:after {
   background: white;
 }
 
-.form__inline {
-  display: flex;
-  align-items: center;
+/* Checkbox */
+
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
 }
 
-.form__input-field {
-  border: 1px solid #949494;
-  border-radius: 0.3rem;
+.checkmark--checkbox {
+  border-radius: 0.2em;
 }
 
-.form__input-notes {
-  text-align: left;
-  margin-bottom: 1.8em;
+.checkmark--checkbox:after {
+  left: 7px;
+  top: 2px;
+  width: 7px;
+  height: 12px;
+  border: solid #3a3737;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
-p.form__notes-func {
-  text-transform: uppercase;
+/* File Input*/
+
+#profile-Pic {
+  width: 120px;
+}
+#profile-Pic .cls-1 {
+  fill: #fff;
 }
 
-p.form__notes-desc,
-p.form__notes-func {
-  margin: 0.2em 0;
+#profile-Pic .cls-2 {
+  fill: #f3f3f3;
+}
+
+#profile-Pic .cls-3 {
+  fill: #949494;
+  fill-rule: evenodd;
+}
+
+#profile-Pic .cls-4 {
+  mask: url(#mask);
+}
+
+.form__input-file + label {
+  max-width: 80%;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
+}
+
+.form__input-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
 /*RESPONSIVE */
