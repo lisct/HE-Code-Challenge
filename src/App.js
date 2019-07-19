@@ -53,16 +53,17 @@ function App() {
               {/* input */}
               <div className="form__input-container">
                 <div className="form__input-items">
-                  <label className="form__input-label" htmlFor="username">
-                    Name
-                    <abbr title="required">*</abbr>
-                  </label>
                   <input
                     className="form__input-field"
                     id="username"
                     type="text"
                     name="username"
+                    required
                   />
+                  <label className="form__input-label" htmlFor="username">
+                    Name
+                    <abbr title="required">*</abbr>
+                  </label>
                 </div>
               </div>
 
@@ -77,16 +78,17 @@ function App() {
                 </div>
 
                 <div className="form__input-items">
-                  <label className="form__input-label" htmlFor="password">
-                    Password
-                    <abbr title="required">*</abbr>
-                  </label>
                   <input
                     className="form__input-field"
                     id="password"
                     type="text"
                     name="password"
+                    required
                   />
+                  <label className="form__input-label" htmlFor="password">
+                    Password
+                    <abbr title="required">*</abbr>
+                  </label>
                 </div>
               </div>
 
@@ -101,16 +103,17 @@ function App() {
                 </div>
 
                 <div className="form__input-items">
-                  <label className="form__input-label" htmlFor="password">
-                    Password
-                    <abbr title="required">*</abbr>
-                  </label>
                   <input
                     className="form__input-field"
                     id="password"
                     type="text"
                     name="password"
+                    required
                   />
+                  <label className="form__input-label" htmlFor="password">
+                    Password
+                    <abbr title="required">*</abbr>
+                  </label>
                 </div>
               </div>
 
@@ -207,7 +210,7 @@ function App() {
                   </span>
                 </div>
 
-                <div className="form__inline">
+                <div className="form__inline form__input-file-container">
                   <div className="form__input-items">
                     <input
                       type="file"
@@ -216,7 +219,10 @@ function App() {
                       className="form__input-file"
                     />
 
-                    <label htmlFor="profile-pic">
+                    <label
+                      htmlFor="profile-pic"
+                      className="form__input-file-label"
+                    >
                       <figure>
                         <svg
                           id="profile-Pic"
@@ -267,16 +273,25 @@ function App() {
                           </g>
                         </svg>
                       </figure>
-                      <span className="">Browse</span>
+                      <div className="btn__container">
+                        <span className="btn btn__standard btn--lighter">
+                          Browse
+                        </span>
+                      </div>
                     </label>
                   </div>
                 </div>
               </div>
 
               <div className="form__input-container">
-                <button type="submit">Create account</button>
+                <button
+                  className="btn btn__primary btn--full btn--dark"
+                  type="submit"
+                >
+                  Create account
+                </button>
 
-                <button>Reset</button>
+                <button className="btn btn--full btn__plain">Reset</button>
               </div>
             </div>
           </form>
