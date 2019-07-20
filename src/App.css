@@ -242,12 +242,22 @@ abbr[title] {
   color: #f6b93d;
 }
 
-.form__input-field.required:invalid {
+.form__input-field.required {
   border: 2px solid #ec5959;
 }
 
-.form__input-field.required:invalid + .form__input-label {
+.form__input-field.required + .form__input-label {
   color: #ec5959;
+}
+
+.form__notes-desc {
+  opacity: 0;
+  color: #ec5959;
+  transition: all ease-in-out 0.2s;
+}
+
+.form__notes-desc.required {
+  opacity: 1;
 }
 
 .form__input-notes {

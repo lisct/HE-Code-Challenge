@@ -14,35 +14,95 @@ import Checkbox from "./components/form/Checkbox";
 import InputFile from "./components/form/InputFile";
 import Button from "./components/form/Button";
 
-function App() {
+import UserFormHandles from "./UserFormHandles";
+import UserDataValidation from "./UserDataValidation";
+
+const INITIAL_STATE = {
+  name: "",
+  email: "",
+  birthday: "",
+  zipcode: "",
+  password: "",
+  confirmation: "",
+  gender: "",
+  newsletter: false,
+  profile_pic: ""
+};
+
+const App = () => {
+  const {
+    handleChange,
+    handleSubmit,
+    values,
+    handleBlur,
+    errors,
+    isSubmitting
+  } = UserFormHandles(INITIAL_STATE, UserDataValidation);
+
   return (
     <div className="App grid-container">
       <Header />
       <Main>
-        <Form>
+        <Form handleEvent={handleSubmit}>
           {/* INPUTS */}
 
-          <Input desc="Error message" name="name" type="text" label="Name" />
-          <Input desc="Error message" name="email" type="text" label="Email" />
           <Input
-            desc="Error message"
+            name="name"
+            type="text"
+            label="Name"
+            value={values.name}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            errors={errors}
+          />
+
+          <Input
+            name="email"
+            type="text"
+            label="Email"
+            value={values.email}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            errors={errors}
+          />
+
+          <Input
+            name="birthday"
+            type="text"
+            label="Birthday"
+            value={values.birthday}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            errors={errors}
+          />
+          <Input
             name="zipcode"
             type="text"
             label="zipcode"
+            value={values.zipcode}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            errors={errors}
           />
           <Input
             note="true"
             func="Show password"
-            desc="Error message"
             name="password"
             type="text"
             label="password"
+            value={values.password}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            errors={errors}
           />
           <Input
-            desc="Error message"
             name="confirmation"
             type="text"
             label="confirm password"
+            value={values.confirmation}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            errors={errors}
           />
 
           {/* RADIOS */}
@@ -51,10 +111,41 @@ function App() {
             subtitle={
               <FormSubtitle copy="gender identity" req="true"></FormSubtitle>
             }
+            errors={errors}
+            value="gender"
           >
-            <Radio name="male" label="male" group="gender" />
-            <Radio name="female" label="female" group="gender" />
-            <Radio name="non-binary" label="non-binary" group="gender" />
+            <Radio
+              name="male"
+              label="male"
+              group="gender"
+              value="M"
+              data={values.gender}
+              handleChange={handleChange}
+            />
+            <Radio
+              name="female"
+              label="female"
+              group="gender"
+              value="F"
+              data={values.gender}
+              handleChange={handleChange}
+            />
+            <Radio
+              name="non-binary"
+              label="non-binary"
+              group="gender"
+              value="non-binary"
+              data={values.gender}
+              handleChange={handleChange}
+            />
+            <Radio
+              name="other"
+              label="other"
+              group="gender"
+              value="other"
+              data={values.gender}
+              handleChange={handleChange}
+            />
           </InlineGroup>
 
           {/* CHECKBOX */}
@@ -63,8 +154,15 @@ function App() {
             subtitle={
               <FormSubtitle copy="subscribe to newsletter"></FormSubtitle>
             }
+            errors={errors}
+            value="newsletter"
           >
-            <Checkbox label="yes" name="yes" />
+            <Checkbox
+              label="yes"
+              name="newsletter"
+              value={values.newsletter}
+              handleChange={handleChange}
+            />
           </InlineGroup>
 
           {/* INPUT FILE */}
@@ -76,6 +174,8 @@ function App() {
                 req="true"
               ></FormSubtitle>
             }
+            errors={errors}
+            value="profile-pic"
           >
             <InputFile name="profile-pic" btn="browse" />
           </InlineGroup>
@@ -87,6 +187,8 @@ function App() {
               styles="btn btn__primary btn--full btn--dark"
               type="submit"
               label="Create Account"
+              form="create-account"
+              action={isSubmitting}
             />
             <Button
               styles="btn btn--full btn__plain"
@@ -98,6 +200,6 @@ function App() {
       </Main>
     </div>
   );
-}
+};
 
 export default App;

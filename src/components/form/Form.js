@@ -3,12 +3,17 @@ import React from "react";
 import FormHeader from "./FormHeader";
 
 // Main container of the website (the actual body wrapper)
-const Form = props => (
+const Form = ({ handleEvent, children }) => (
   <div className="form_container">
-    <form className="form">
+    <form
+      className="form"
+      method="get"
+      id="create-account"
+      onSubmit={handleEvent}
+    >
       <FormHeader />
 
-      <div className="form__container">{props.children}</div>
+      <div className="form__container">{children}</div>
     </form>
   </div>
 );
