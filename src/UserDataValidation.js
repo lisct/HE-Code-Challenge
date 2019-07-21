@@ -1,18 +1,88 @@
 export default function UserDataValidation(values) {
   let errors = {};
 
-  // Email errors
+  // Name Errors
+  if (!values.name) {
+    errors.name = "Name is required";
+  }
+
+  // Email Errors
   if (!values.email) {
-    errors.email = "Required Email";
+    errors.email = "Email is required.";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
     errors.email = "Invalid email address";
   }
 
+  //Birthday Errors
+  if (!values.birthday) {
+    errors.birthday = "Birthday is required";
+  } else {
+    const data = values.birthday.split("-");
+    const year = data[0];
+    const month = data[1];
+    const day = data[2];
+    const age = 18;
+    const mydate = new Date();
+    const today = new Date();
+
+    mydate.setFullYear(year, month - 1, day);
+    today.setFullYear(today.getFullYear() - age);
+
+    if (today - mydate < 0) {
+      errors.birthday = "Sorry, birthday should be 18 years or older";
+    }
+  }
+
+  //Zipcode Errors
+  if (!values.zip) {
+    errors.zip = "Zipcode is required";
+  } else {
+    const zipcodes = [
+      57001,
+      57002,
+      57003,
+      57004,
+      57005,
+      57006,
+      57007,
+      57010,
+      57012,
+      57013,
+      57014,
+      57015
+    ];
+    const data = values.zip * 1; // converting into number
+    if (!zipcodes.includes(data)) {
+      errors.zip = "Zip code must match one from the list";
+    }
+  }
+
   // Password Errors
   if (!values.password) {
-    errors.password = "Required Password";
-  } else if (values.password.length < 6) {
-    errors.password = "Password must be at least 6 characters";
+    errors.password = "Password is required";
+  } else {
+    const regex = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*(?=.*[!@#$%^&*_-]))");
+    if (!regex.test(values.password)) {
+      errors.password =
+        "Must contain one uppercase letter, one number, & one special character";
+    }
+  }
+
+  // Confirmation Errors
+  if (!values.confirmation) {
+    errors.confirmation = "Confirmation Password is required";
+  } else if (values.confirmation !== values.password) {
+    errors.confirmation = "Password does not match";
+  }
+
+  // Gender Errors
+  if (!values.gender) {
+    errors.gender = "Gender Identity is required";
+  }
+
+  // Profile Image Errors
+  if (!values.profileImage) {
+    errors.profileImage = "Profile Image is required";
   }
 
   return errors;

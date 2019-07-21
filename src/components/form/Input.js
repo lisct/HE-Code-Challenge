@@ -14,14 +14,14 @@ const Input = ({
   <div className="form__input-container">
     <div className="form__input-notes">
       {note && <p className="form__notes-func">{func}</p>}
-      <p className={`form__notes-desc ${errors[name] && "required"}`}>
-        {errors[name] ? errors[name] : "errors space"}
+      <p className={`form__notes-desc ${errors && "required"}`}>
+        {errors ? errors : <span>&nbsp;</span>}
       </p>
     </div>
 
     <div className="form__input-items">
       <input
-        className={`form__input-field ${errors[name] && "required"}`}
+        className={`form__input-field ${errors && "required"}`}
         id={name}
         type={type}
         name={name}

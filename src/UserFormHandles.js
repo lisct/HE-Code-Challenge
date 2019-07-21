@@ -30,8 +30,8 @@ const UserFormHandle = (initial_state, validate) => {
   }
 
   function handleBlur(event) {
-    const validationErrors = validate(values);
-    setErrors(validationErrors);
+    // const validationErrors = validate(values);
+    // setErrors(validationErrors);
   }
 
   // On submit form

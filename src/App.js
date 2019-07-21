@@ -21,12 +21,12 @@ const INITIAL_STATE = {
   name: "",
   email: "",
   birthday: "",
-  zipcode: "",
+  zip: "",
   password: "",
   confirmation: "",
   gender: "",
   newsletter: false,
-  profile_pic: ""
+  profileImage: ""
 };
 
 const App = () => {
@@ -35,8 +35,7 @@ const App = () => {
     handleSubmit,
     values,
     handleBlur,
-    errors,
-    isSubmitting
+    errors
   } = UserFormHandles(INITIAL_STATE, UserDataValidation);
 
   return (
@@ -53,7 +52,7 @@ const App = () => {
             value={values.name}
             handleChange={handleChange}
             handleBlur={handleBlur}
-            errors={errors}
+            errors={errors.name}
           />
 
           <Input
@@ -63,46 +62,46 @@ const App = () => {
             value={values.email}
             handleChange={handleChange}
             handleBlur={handleBlur}
-            errors={errors}
+            errors={errors.email}
           />
 
           <Input
             name="birthday"
-            type="text"
+            type="date"
             label="Birthday"
             value={values.birthday}
             handleChange={handleChange}
             handleBlur={handleBlur}
-            errors={errors}
+            errors={errors.birthday}
           />
           <Input
-            name="zipcode"
+            name="zip"
             type="text"
-            label="zipcode"
-            value={values.zipcode}
+            label="zip"
+            value={values.zip}
             handleChange={handleChange}
             handleBlur={handleBlur}
-            errors={errors}
+            errors={errors.zip}
           />
           <Input
             note="true"
             func="Show password"
             name="password"
-            type="text"
+            type="password"
             label="password"
             value={values.password}
             handleChange={handleChange}
             handleBlur={handleBlur}
-            errors={errors}
+            errors={errors.password}
           />
           <Input
             name="confirmation"
-            type="text"
+            type="password"
             label="confirm password"
             value={values.confirmation}
             handleChange={handleChange}
             handleBlur={handleBlur}
-            errors={errors}
+            errors={errors.confirmation}
           />
 
           {/* RADIOS */}
@@ -111,7 +110,7 @@ const App = () => {
             subtitle={
               <FormSubtitle copy="gender identity" req="true"></FormSubtitle>
             }
-            errors={errors}
+            errors={errors.gender}
             value="gender"
           >
             <Radio
@@ -154,7 +153,7 @@ const App = () => {
             subtitle={
               <FormSubtitle copy="subscribe to newsletter"></FormSubtitle>
             }
-            errors={errors}
+            errors={errors.newsletter}
             value="newsletter"
           >
             <Checkbox
@@ -174,7 +173,7 @@ const App = () => {
                 req="true"
               ></FormSubtitle>
             }
-            errors={errors}
+            errors={errors.profileImage}
             value="profile-pic"
           >
             <InputFile name="profile-pic" btn="browse" />
@@ -188,7 +187,6 @@ const App = () => {
               type="submit"
               label="Create Account"
               form="create-account"
-              action={isSubmitting}
             />
             <Button
               styles="btn btn--full btn__plain"
