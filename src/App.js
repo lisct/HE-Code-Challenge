@@ -33,9 +33,11 @@ const App = () => {
   const {
     handleChange,
     handleSubmit,
+    handleShowPass,
     values,
     handleBlur,
-    errors
+    errors,
+    passRef
   } = UserFormHandles(INITIAL_STATE, UserDataValidation);
 
   return (
@@ -83,6 +85,7 @@ const App = () => {
             handleBlur={handleBlur}
             errors={errors.zip}
           />
+
           <Input
             note="true"
             func="Show password"
@@ -92,7 +95,9 @@ const App = () => {
             value={values.password}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            handleFunc={handleShowPass}
             errors={errors.password}
+            ref={passRef}
           />
           <Input
             name="confirmation"
@@ -174,9 +179,13 @@ const App = () => {
               ></FormSubtitle>
             }
             errors={errors.profileImage}
-            value="profile-pic"
+            value="profileImage"
           >
-            <InputFile name="profile-pic" btn="browse" />
+            <InputFile
+              name="profileImage"
+              btn="browse"
+              handleChange={handleChange}
+            />
           </InlineGroup>
 
           {/* BUTTONS */}

@@ -83,6 +83,13 @@ export default function UserDataValidation(values) {
   // Profile Image Errors
   if (!values.profileImage) {
     errors.profileImage = "Profile Image is required";
+  } else {
+    const file = values.profileImage;
+    if (file.size > 10489999) {
+      errors.profileImage = "The file size limit is 10mb";
+    } else if (!(file.type === "image/jpeg" || file.type === "image/png")) {
+      errors.profileImage = "The format is invalid, must be JPG or PNG";
+    }
   }
 
   return errors;

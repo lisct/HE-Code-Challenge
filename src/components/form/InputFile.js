@@ -1,9 +1,15 @@
 import React from "react";
 
-const InputFile = ({ name, btn }) => (
+const InputFile = ({ name, btn, handleChange }) => (
   <div className="form__inline form__input-file-container">
     <div className="form__input-items">
-      <input type="file" name={name} id={name} className="form__input-file" />
+      <input
+        className="form__input-file"
+        type="file"
+        name={name}
+        id={name}
+        onChange={handleChange}
+      />
 
       <label className="form__input-file-label" htmlFor={name}>
         <figure>

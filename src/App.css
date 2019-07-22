@@ -229,8 +229,13 @@ abbr[title] {
 .form__input-field {
   border: 1px solid #949494;
   border-radius: 0.3rem;
+  transition: all ease-in-out 0.3s;
 }
 
+.form__input-field:hover {
+  cursor: pointer;
+  border: 2px solid #949494;
+}
 .form__input-field:focus {
   border: 2px solid #f6b93d;
 }
@@ -263,6 +268,7 @@ abbr[title] {
 }
 
 p.form__notes-func {
+  cursor: pointer;
   text-transform: uppercase;
 }
 
