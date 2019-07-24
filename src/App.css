@@ -174,7 +174,6 @@ abbr[title] {
   font-size: 2.3em;
   font-weight: 300;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 
 .form__divider {
@@ -313,7 +312,7 @@ p.form__notes-func {
   user-select: none;
 }
 
-input[type="checkbox"],
+.form__input-checkbox,
 input[type="radio"] {
   position: absolute;
   opacity: 0;
@@ -335,7 +334,7 @@ input[type="radio"] {
   display: none;
 }
 
-input[type="checkbox"]:checked ~ .checkmark:after,
+.form__input-checkbox:checked ~ .checkmark:after,
 input[type="radio"]:checked ~ .checkmark:after {
   display: block;
 }
@@ -362,7 +361,7 @@ input[type="radio"]:checked ~ .checkmark--radio {
 
 /* Checkbox */
 
-input[type="checkbox"] {
+.form__input-checkbox {
   height: 0;
   width: 0;
 }
@@ -441,7 +440,7 @@ input[type="checkbox"] {
   margin-left: 0;
 }
 
-/* Buttons*/
+/* Buttons */
 
 .btn {
   border: 0;
@@ -489,6 +488,94 @@ input[type="checkbox"] {
 }
 
 .btn__plain:hover {
+  color: #ec5959;
+}
+
+/* User */
+.form__users {
+  width: 100%;
+  padding: 4rem 5rem;
+}
+
+.form__users .user {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 4em;
+}
+
+.user__description {
+  width: 100%;
+  padding: 0 3em;
+  font-size: 1.5em;
+}
+
+.user__info {
+  margin-top: 2em;
+}
+
+.user:after {
+  content: "";
+  height: 2px;
+  width: 77%;
+  background-color: #979797;
+  position: absolute;
+  left: 106px;
+  right: 0;
+  bottom: -12px;
+}
+
+.user__name,
+.user__info-data span {
+  font-weight: 700;
+}
+
+.user p {
+  color: #949494;
+  transition: all ease-in-out 0.3s;
+  margin: 0.4em 0;
+}
+
+p.user__name {
+  color: #3a3737;
+}
+
+.user_more_state {
+  display: none;
+}
+
+.user_more_target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: all ease-in-out 0.3s;
+}
+
+.user_more_trigger {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.5em;
+  color: #3a3737;
+  font-size: 3.2em;
+  transition: all ease-in-out 0.3s;
+}
+
+.user_more_state:checked ~ .user__description .user_more_target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.user_more_state ~ .user__more .user_more_trigger:before {
+  content: "+";
+}
+
+.user_more_state:checked ~ .user__more .user_more_trigger:before {
+  content: "-";
+}
+
+.user_more_state:hover ~ .user__more .user_more_trigger,
+.user_more_state:hover ~ .user__description p {
   color: #ec5959;
 }
 

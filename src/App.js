@@ -13,6 +13,7 @@ import Radio from "./components/form/Radio";
 import Checkbox from "./components/form/Checkbox";
 import InputFile from "./components/form/InputFile";
 import Button from "./components/form/Button";
+import FormThanks from "../src/components/form/FormThanks";
 
 import UserFormHandles from "./UserFormHandles";
 import UserDataValidation from "./UserDataValidation";
@@ -33,7 +34,9 @@ const App = () => {
   const {
     handleChange,
     handleSubmit,
+    hanldleReset,
     handleShowPass,
+    apiData,
     values,
     handleBlur,
     errors,
@@ -44,166 +47,170 @@ const App = () => {
     <div className="App grid-container">
       <Header />
       <Main>
-        <Form handleEvent={handleSubmit}>
-          {/* INPUTS */}
+        {apiData ? (
+          <FormThanks users={apiData} />
+        ) : (
+          <Form handleEvent={handleSubmit}>
+            {/* INPUTS */}
 
-          <Input
-            name="name"
-            type="text"
-            label="Name"
-            value={values.name}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            errors={errors.name}
-          />
-
-          <Input
-            name="email"
-            type="text"
-            label="Email"
-            value={values.email}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            errors={errors.email}
-          />
-
-          <Input
-            name="birthday"
-            type="date"
-            label="Birthday"
-            value={values.birthday}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            errors={errors.birthday}
-          />
-          <Input
-            name="zip"
-            type="text"
-            label="zip"
-            value={values.zip}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            errors={errors.zip}
-          />
-
-          <Input
-            note="true"
-            func="Show password"
-            name="password"
-            type="password"
-            label="password"
-            value={values.password}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            handleFunc={handleShowPass}
-            errors={errors.password}
-            ref={passRef}
-          />
-          <Input
-            name="confirmation"
-            type="password"
-            label="confirm password"
-            value={values.confirmation}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            errors={errors.confirmation}
-          />
-
-          {/* RADIOS */}
-
-          <InlineGroup
-            subtitle={
-              <FormSubtitle copy="gender identity" req="true"></FormSubtitle>
-            }
-            errors={errors.gender}
-            value="gender"
-          >
-            <Radio
-              name="male"
-              label="male"
-              group="gender"
-              value="M"
-              data={values.gender}
+            <Input
+              name="name"
+              type="text"
+              label="Name"
+              value={values.name}
               handleChange={handleChange}
+              handleBlur={handleBlur}
+              errors={errors.name}
             />
-            <Radio
-              name="female"
-              label="female"
-              group="gender"
-              value="F"
-              data={values.gender}
+
+            <Input
+              name="email"
+              type="text"
+              label="Email"
+              value={values.email}
               handleChange={handleChange}
+              handleBlur={handleBlur}
+              errors={errors.email}
             />
-            <Radio
-              name="non-binary"
-              label="non-binary"
-              group="gender"
-              value="non-binary"
-              data={values.gender}
+
+            <Input
+              name="birthday"
+              type="date"
+              label="Birthday"
+              value={values.birthday}
               handleChange={handleChange}
+              handleBlur={handleBlur}
+              errors={errors.birthday}
             />
-            <Radio
-              name="other"
-              label="other"
-              group="gender"
-              value="other"
-              data={values.gender}
+            <Input
+              name="zip"
+              type="text"
+              label="zip"
+              value={values.zip}
               handleChange={handleChange}
+              handleBlur={handleBlur}
+              errors={errors.zip}
             />
-          </InlineGroup>
 
-          {/* CHECKBOX */}
-
-          <InlineGroup
-            subtitle={
-              <FormSubtitle copy="subscribe to newsletter"></FormSubtitle>
-            }
-            errors={errors.newsletter}
-            value="newsletter"
-          >
-            <Checkbox
-              label="yes"
-              name="newsletter"
-              value={values.newsletter}
+            <Input
+              note="true"
+              func="Show password"
+              name="password"
+              type="password"
+              label="password"
+              value={values.password}
               handleChange={handleChange}
+              handleBlur={handleBlur}
+              handleFunc={handleShowPass}
+              errors={errors.password}
+              ref={passRef}
             />
-          </InlineGroup>
-
-          {/* INPUT FILE */}
-
-          <InlineGroup
-            subtitle={
-              <FormSubtitle
-                copy="Upload your profile pic"
-                req="true"
-              ></FormSubtitle>
-            }
-            errors={errors.profileImage}
-            value="profileImage"
-          >
-            <InputFile
-              name="profileImage"
-              btn="browse"
+            <Input
+              name="confirmation"
+              type="password"
+              label="confirm password"
+              value={values.confirmation}
               handleChange={handleChange}
+              handleBlur={handleBlur}
+              errors={errors.confirmation}
             />
-          </InlineGroup>
 
-          {/* BUTTONS */}
+            {/* RADIOS */}
 
-          <InputContainer>
-            <Button
-              styles="btn btn__primary btn--full btn--dark"
-              type="submit"
-              label="Create Account"
-              form="create-account"
-            />
-            <Button
-              styles="btn btn--full btn__plain"
-              type="reset"
-              label="Reset"
-            />
-          </InputContainer>
-        </Form>
+            <InlineGroup
+              subtitle={
+                <FormSubtitle copy="gender identity" req="true"></FormSubtitle>
+              }
+              errors={errors.gender}
+              value="gender"
+            >
+              <Radio
+                name="male"
+                label="male"
+                group="gender"
+                value="M"
+                data={values.gender}
+                handleChange={handleChange}
+              />
+              <Radio
+                name="female"
+                label="female"
+                group="gender"
+                value="F"
+                data={values.gender}
+                handleChange={handleChange}
+              />
+              <Radio
+                name="non-binary"
+                label="non-binary"
+                group="gender"
+                value="non-binary"
+                data={values.gender}
+                handleChange={handleChange}
+              />
+              <Radio
+                name="other"
+                label="other"
+                group="gender"
+                value="other"
+                data={values.gender}
+                handleChange={handleChange}
+              />
+            </InlineGroup>
+
+            {/* CHECKBOX */}
+
+            <InlineGroup
+              subtitle={
+                <FormSubtitle copy="subscribe to newsletter"></FormSubtitle>
+              }
+              errors={errors.newsletter}
+              value="newsletter"
+            >
+              <Checkbox
+                label="yes"
+                name="newsletter"
+                value={values.newsletter}
+                handleChange={handleChange}
+              />
+            </InlineGroup>
+
+            {/* INPUT FILE */}
+
+            <InlineGroup
+              subtitle={
+                <FormSubtitle
+                  copy="Upload your profile pic"
+                  req="true"
+                ></FormSubtitle>
+              }
+              errors={errors.profileImage}
+              value="profileImage"
+            >
+              <InputFile
+                name="profileImage"
+                btn="browse"
+                handleChange={handleChange}
+              />
+            </InlineGroup>
+
+            {/* BUTTONS */}
+            <InputContainer>
+              <Button
+                styles="btn btn__primary btn--full btn--dark"
+                type="submit"
+                label="Create Account"
+                form="create-account"
+              />
+              <Button
+                styles="btn btn--full btn__plain"
+                type="reset"
+                label="Reset"
+                handleEvent={hanldleReset}
+              />
+            </InputContainer>
+          </Form>
+        )}
       </Main>
     </div>
   );

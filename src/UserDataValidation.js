@@ -17,20 +17,11 @@ export default function UserDataValidation(values) {
   if (!values.birthday) {
     errors.birthday = "Birthday is required";
   } else {
-    const data = values.birthday.split("-");
-    const year = data[0];
-    const month = data[1];
-    const day = data[2];
-    const age = 18;
-    const mydate = new Date();
-    const today = new Date();
+    const getAge = birthDate =>
+      Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e10);
+    const age = getAge(values.birthday);
 
-    mydate.setFullYear(year, month - 1, day);
-    today.setFullYear(today.getFullYear() - age);
-
-    if (today - mydate < 0) {
-      errors.birthday = "Sorry, birthday should be 18 years or older";
-    }
+    if (age < 18) errors.birthday = "Sorry, birthday must be 18 years or older";
   }
 
   //Zipcode Errors

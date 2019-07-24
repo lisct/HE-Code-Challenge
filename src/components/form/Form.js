@@ -11,7 +11,7 @@ const Form = ({ handleEvent, children }) => (
       id="create-account"
       onSubmit={handleEvent}
     >
-      <FormHeader />
+      <FormHeader copy="CREATE AN ACCOUNT" required={true} />
 
       <div className="form__container">{children}</div>
     </form>
