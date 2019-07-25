@@ -10,7 +10,6 @@ const Input = forwardRef(
       label,
       value,
       handleChange,
-      handleBlur,
       handleFunc,
       errors
     },
@@ -41,7 +40,6 @@ const Input = forwardRef(
             name={name}
             value={value}
             onChange={handleChange}
-            onBlur={handleBlur}
             autoComplete="off"
             {...(ref ? { ref: ref } : {})}
           />

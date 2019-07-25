@@ -7,6 +7,7 @@ const UserFormHandle = (initial_state, validate) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setSubmitting] = useState(false);
   const [apiData, setApiData] = useState(false);
+  const [apiError, setApiErrors] = useState(false);
   const passRef = createRef();
 
   useEffect(() => {
@@ -15,14 +16,20 @@ const UserFormHandle = (initial_state, validate) => {
       if (noErrors) {
         fetch(API)
           .then(res => res.json())
+          .then(res => res.concat([values]))
+          .then(res =>
+            res.sort(function(a, b) {
+              return a.name.localeCompare(b.name);
+            })
+          )
           .then(res => setApiData(res))
-          .catch(error => console.log("Looks like there was a problem", error));
+          .catch(error => setApiErrors(error));
         setSubmitting(false);
       } else {
         setSubmitting(false);
       }
     }
-  }, [errors, isSubmitting, values]);
+  }, [apiData, apiError, errors, isSubmitting, values]);
 
   // Receiving the data and saving it in the state(Hooks)
   function handleChange(event) {
@@ -45,11 +52,8 @@ const UserFormHandle = (initial_state, validate) => {
     setValues({
       ...initial_state
     });
-  }
 
-  function handleBlur(event) {
-    // const validationErrors = validate(values);
-    // setErrors(validationErrors);
+    setErrors({});
   }
 
   // On submit form
@@ -66,8 +70,8 @@ const UserFormHandle = (initial_state, validate) => {
     hanldleReset,
     handleShowPass,
     apiData,
+    apiError,
     values,
-    handleBlur,
     errors,
     passRef
   };

@@ -33,6 +33,9 @@ body {
 }
 
 input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: none;
   border: none;
   height: 2.6em;
@@ -42,6 +45,21 @@ input {
 }
 
 input:focus {
+  background: white;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+::-webkit-inner-spin-button {
+  display: none;
+}
+::-webkit-calendar-picker-indicator {
   background: white;
 }
 
@@ -104,6 +122,16 @@ abbr[title] {
   display: none;
 }
 
+.header__user-settings {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__user-settings img {
+  width: 40px;
+  margin-right: 1em;
+}
+
 /* HAMBURGUER MENU */
 .menu-icon {
   align-items: center;
@@ -159,7 +187,7 @@ abbr[title] {
 .form {
   background-color: white;
   margin: 0 auto;
-  max-width: 640px;
+  max-width: 390px;
   padding: 5em 0;
   -webkit-box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.25);
@@ -201,10 +229,6 @@ abbr[title] {
   padding: 0 3rem;
 }
 
-.form__input-container {
-  margin-top: 2.6em;
-}
-
 .form__input-items {
   align-items: center;
   display: flex;
@@ -221,8 +245,7 @@ abbr[title] {
 }
 
 .form__inline {
-  display: flex;
-  align-items: center;
+  display: block;
 }
 
 .form__input-field {
@@ -264,6 +287,7 @@ abbr[title] {
 .form__input-notes {
   text-align: left;
   margin-bottom: 1.8em;
+  margin-top: 1.3em;
 }
 
 p.form__notes-func {
@@ -315,7 +339,7 @@ p.form__notes-func {
 .form__input-checkbox,
 input[type="radio"] {
   position: absolute;
-  opacity: 0;
+  display: none;
   cursor: pointer;
 }
 
@@ -413,7 +437,6 @@ input[type="radio"]:checked ~ .checkmark--radio {
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  padding: 0.625rem 1.25rem;
 }
 
 .form__input-file {
@@ -428,7 +451,7 @@ input[type="radio"]:checked ~ .checkmark--radio {
 .form__input-file-container .form__input-file + label {
   display: flex;
   align-items: center;
-  width: 100%;
+  min-width: 100%;
 }
 
 .form__input-file-container,
@@ -491,6 +514,11 @@ input[type="radio"]:checked ~ .checkmark--radio {
   color: #ec5959;
 }
 
+.btn__errors {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 /* User */
 .form__users {
   width: 100%;
@@ -502,6 +530,14 @@ input[type="radio"]:checked ~ .checkmark--radio {
   justify-content: space-between;
   position: relative;
   margin-bottom: 4em;
+}
+
+.user__image div {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-position: center top;
+  border-radius: 50%;
 }
 
 .user__description {
@@ -581,8 +617,31 @@ p.user__name {
 
 /*RESPONSIVE */
 
-/* Non-mobile styles, >375px breakpoint */
-@media only screen and (min-width: 415px) {
+/* Non-mobile styles, >435px breakpoint */
+@media only screen and (min-width: 435px) {
+  .form {
+    max-width: 640px;
+  }
+
+  .form__input-file + label {
+    padding: 0.625rem 1.25rem;
+  }
+
+  .form__inline {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  .form__input-notes {
+    margin-top: 0;
+  }
+
+  .form__input-container {
+    margin-top: 2.6em;
+  }
+
   .menu-icon {
     display: none;
   }

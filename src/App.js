@@ -14,6 +14,7 @@ import Checkbox from "./components/form/Checkbox";
 import InputFile from "./components/form/InputFile";
 import Button from "./components/form/Button";
 import FormThanks from "../src/components/form/FormThanks";
+import Errors from "./components/form/Errors";
 
 import UserFormHandles from "./UserFormHandles";
 import UserDataValidation from "./UserDataValidation";
@@ -37,15 +38,15 @@ const App = () => {
     hanldleReset,
     handleShowPass,
     apiData,
+    apiError,
     values,
-    handleBlur,
     errors,
     passRef
   } = UserFormHandles(INITIAL_STATE, UserDataValidation);
 
   return (
     <div className="App grid-container">
-      <Header />
+      <Header logged={apiData} name={values.name} img={values.profileImage} />
       <Main>
         {apiData ? (
           <FormThanks users={apiData} />
@@ -59,7 +60,6 @@ const App = () => {
               label="Name"
               value={values.name}
               handleChange={handleChange}
-              handleBlur={handleBlur}
               errors={errors.name}
             />
 
@@ -69,7 +69,6 @@ const App = () => {
               label="Email"
               value={values.email}
               handleChange={handleChange}
-              handleBlur={handleBlur}
               errors={errors.email}
             />
 
@@ -79,7 +78,6 @@ const App = () => {
               label="Birthday"
               value={values.birthday}
               handleChange={handleChange}
-              handleBlur={handleBlur}
               errors={errors.birthday}
             />
             <Input
@@ -88,7 +86,6 @@ const App = () => {
               label="zip"
               value={values.zip}
               handleChange={handleChange}
-              handleBlur={handleBlur}
               errors={errors.zip}
             />
 
@@ -100,7 +97,6 @@ const App = () => {
               label="password"
               value={values.password}
               handleChange={handleChange}
-              handleBlur={handleBlur}
               handleFunc={handleShowPass}
               errors={errors.password}
               ref={passRef}
@@ -111,7 +107,6 @@ const App = () => {
               label="confirm password"
               value={values.confirmation}
               handleChange={handleChange}
-              handleBlur={handleBlur}
               errors={errors.confirmation}
             />
 
@@ -164,7 +159,6 @@ const App = () => {
               subtitle={
                 <FormSubtitle copy="subscribe to newsletter"></FormSubtitle>
               }
-              errors={errors.newsletter}
               value="newsletter"
             >
               <Checkbox
@@ -196,6 +190,11 @@ const App = () => {
 
             {/* BUTTONS */}
             <InputContainer>
+              {apiError && (
+                <div class="btn__errors">
+                  <Errors errors={apiError} />
+                </div>
+              )}
               <Button
                 styles="btn btn__primary btn--full btn--dark"
                 type="submit"
