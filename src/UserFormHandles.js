@@ -7,7 +7,7 @@ const UserFormHandle = (initial_state, validate) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setSubmitting] = useState(false);
   const [apiData, setApiData] = useState(false);
-  const [apiError, setApiErrors] = useState(false);
+  const [apiError, setApiErrors] = useState("");
   const passRef = createRef();
 
   useEffect(() => {
@@ -17,22 +17,25 @@ const UserFormHandle = (initial_state, validate) => {
         fetch(API)
           .then(res => res.json())
           .then(res => res.concat([values]))
-          .then(res =>
-            res.sort(function(a, b) {
-              return a.name.localeCompare(b.name);
-            })
-          )
-          .then(res => setApiData(res))
+          .then(res => res.sort((a, b) => a.name.localeCompare(b.name)))
+          .then(res => {
+            // if email is already registered
+            if (res.filter(res => res.email === values.email).length !== 1) {
+              setApiErrors("The email address is alredy registered");
+            } else {
+              setApiData(res);
+            }
+          })
           .catch(error => setApiErrors(error));
         setSubmitting(false);
       } else {
         setSubmitting(false);
       }
     }
-  }, [apiData, apiError, errors, isSubmitting, values]);
+  }, [errors, isSubmitting, values]);
 
   // Receiving the data and saving it in the state(Hooks)
-  function handleChange(event) {
+  const handleChange = event => {
     setValues({
       ...values,
       [event.target.name]:
@@ -42,27 +45,27 @@ const UserFormHandle = (initial_state, validate) => {
           ? event.target.files[0]
           : event.target.value
     });
-  }
+  };
 
-  function handleShowPass(action) {
+  const handleShowPass = action => {
     passRef.current.type = action;
-  }
+  };
 
-  function hanldleReset() {
+  const hanldleReset = () => {
     setValues({
       ...initial_state
     });
 
     setErrors({});
-  }
+  };
 
   // On submit form
-  function handleSubmit(event) {
+  const handleSubmit = event => {
     event.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
     setSubmitting(true);
-  }
+  };
 
   return {
     handleChange,

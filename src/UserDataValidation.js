@@ -20,7 +20,6 @@ export default function UserDataValidation(values) {
     const getAge = birthDate =>
       Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e10);
     const age = getAge(values.birthday);
-
     if (age < 18) errors.birthday = "Sorry, birthday must be 18 years or older";
   }
 

@@ -83,7 +83,7 @@ const App = () => {
             <Input
               name="zip"
               type="text"
-              label="zip"
+              label="zipcode"
               value={values.zip}
               handleChange={handleChange}
               errors={errors.zip}
@@ -191,7 +191,7 @@ const App = () => {
             {/* BUTTONS */}
             <InputContainer>
               {apiError && (
-                <div class="btn__errors">
+                <div className="btn__errors">
                   <Errors errors={apiError} />
                 </div>
               )}

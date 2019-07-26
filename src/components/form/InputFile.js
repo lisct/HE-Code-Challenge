@@ -14,7 +14,7 @@ const InputFile = ({ name, btn, handleChange }) => (
       <label className="form__input-file-label" htmlFor={name}>
         <figure>
           <svg
-            id="profile-Pic"
+            className="profile-pic"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 120 120"
           >
@@ -23,8 +23,8 @@ const InputFile = ({ name, btn, handleChange }) => (
                 id="mask"
                 x="0"
                 y="0"
-                width="20"
-                height="17"
+                width="120"
+                height="120"
                 maskUnits="userSpaceOnUse"
               >
                 <g id="mask-2">
@@ -38,7 +38,7 @@ const InputFile = ({ name, btn, handleChange }) => (
                 </g>
               </mask>
             </defs>
-            <title>profile-Pic</title>
+            <title>Profile-Pic</title>
             <circle id="circle" className="cls-2" cx="60" cy="60" r="60" />
             <path
               id="mountain"

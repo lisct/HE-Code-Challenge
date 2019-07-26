@@ -1,18 +1,13 @@
 import React from "react";
-
-const today = () => {
-  var now = new Date();
-  var day = ("0" + now.getDate()).slice(-2);
-  var month = ("0" + (now.getMonth() + 1)).slice(-2);
-  return `${month}.${day}.${now.getFullYear()}`;
-};
+// eslint-disable-next-line
+import { todayDateFormat } from "../components/utilities";
 
 // Main Header (menu)
 const Header = ({ logged, name, img }) => (
   <header className="header__wrapper">
     <div className="container">
       <div className="header">
-        <div className="header__date">{logged && today()}</div>
+        <div className="header__date">{logged && todayDateFormat()}</div>
         <div className="header__tittle">Code Challenge</div>
         <div className="header__user">
           {logged && (

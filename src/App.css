@@ -3,14 +3,17 @@
  * * html is set to 62.5% so that all the REM measurements throughout Skeleton are         based on 10px sizing. So basically 1.5rem = 15px :) 
 */
 
-html {
-  font-size: 62.5%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 /* GENERAL */
+
+:root {
+  --dark: #3a3737;
+  --gray: #949494;
+  --lighter: #979797;
+  --yellow: #f6b93d;
+  --light: #f3f3f3;
+  --white: white;
+  --warning: #ec5959;
+}
 
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,700&display=swap");
 
@@ -18,6 +21,17 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -28,8 +42,11 @@ body {
   text-rendering: optimizeLegibility; */
 }
 
-*:focus {
-  outline: none;
+abbr[title] {
+  border-bottom: none;
+  cursor: inherit;
+  text-decoration: none;
+  font-size: 2em;
 }
 
 input {
@@ -45,29 +62,22 @@ input {
 }
 
 input:focus {
-  background: white;
+  background: var(--white);
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  box-shadow: 0 0 0 30px white inset !important;
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px var(--white) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--white) inset !important;
 }
 
 ::-webkit-inner-spin-button {
   display: none;
 }
 ::-webkit-calendar-picker-indicator {
-  background: white;
-}
-
-abbr[title] {
-  border-bottom: none;
-  cursor: inherit;
-  text-decoration: none;
-  font-size: 2em;
+  background: var(--white);
 }
 
 /* GRID */
@@ -90,8 +100,8 @@ abbr[title] {
 /* HEADER */
 
 .header__wrapper {
-  background: white;
-  border-bottom: 0.3rem solid #3a3737;
+  background: var(--white);
+  border-bottom: 0.3rem solid var(--dark);
   position: relative;
 }
 
@@ -102,7 +112,7 @@ abbr[title] {
   justify-content: space-between;
   padding: 1.6rem;
   letter-spacing: 0.05em;
-  color: #3a3737;
+  color: var(--dark);
   height: 100px;
 }
 
@@ -152,7 +162,7 @@ abbr[title] {
 .menu-icon .icon__line-b:before,
 .menu-icon .icon__line-c:before {
   content: "";
-  background-color: #3a3737;
+  background-color: var(--dark);
   height: 5px;
   position: absolute;
   right: 0;
@@ -185,7 +195,7 @@ abbr[title] {
 /* FORM */
 
 .form {
-  background-color: white;
+  background-color: var(--white);
   margin: 0 auto;
   max-width: 390px;
   padding: 5em 0;
@@ -209,7 +219,7 @@ abbr[title] {
 }
 
 .form__divider .cls-1 {
-  fill: #3a3737;
+  fill: var(--dark);
   fill-rule: evenodd;
 }
 .form__required abbr {
@@ -217,14 +227,14 @@ abbr[title] {
 }
 
 .form__required {
-  color: #949494;
+  color: var(--gray);
   font-size: 1.3em;
 }
 
 /* Inputs */
 
 .form__input-container {
-  color: #949494;
+  color: var(--gray);
   font-size: 1.3rem;
   padding: 0 3rem;
 }
@@ -236,7 +246,7 @@ abbr[title] {
 }
 
 .form__input-label {
-  background-color: white;
+  background-color: var(--white);
   position: absolute;
   padding-left: 4px;
   text-transform: uppercase;
@@ -249,34 +259,34 @@ abbr[title] {
 }
 
 .form__input-field {
-  border: 1px solid #949494;
+  border: 1px solid var(--gray);
   border-radius: 0.3rem;
   transition: all ease-in-out 0.3s;
 }
 
 .form__input-field:hover {
   cursor: pointer;
-  border: 2px solid #949494;
+  border: 2px solid var(--gray);
 }
 .form__input-field:focus {
-  border: 2px solid #f6b93d;
+  border: 2px solid var(--yellow);
 }
 
 .form__input-field:focus + .form__input-label {
-  color: #f6b93d;
+  color: var(--yellow);
 }
 
 .form__input-field.required {
-  border: 2px solid #ec5959;
+  border: 2px solid var(--warning);
 }
 
 .form__input-field.required + .form__input-label {
-  color: #ec5959;
+  color: var(--warning);
 }
 
 .form__notes-desc {
   opacity: 0;
-  color: #ec5959;
+  color: var(--warning);
   transition: all ease-in-out 0.2s;
 }
 
@@ -349,7 +359,7 @@ input[type="radio"] {
   left: 0;
   height: 22px;
   width: 22px;
-  border: 1px solid #949494;
+  border: 1px solid var(--gray);
 }
 
 .checkmark:after {
@@ -370,8 +380,8 @@ input[type="radio"]:checked ~ .checkmark:after {
 }
 
 input[type="radio"]:checked ~ .checkmark--radio {
-  background-color: #3a3737;
-  border: 1px solid #3a3737;
+  background-color: var(--dark);
+  border: 1px solid var(--dark);
 }
 
 .checkmark--radio:after {
@@ -380,7 +390,7 @@ input[type="radio"]:checked ~ .checkmark--radio {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: white;
+  background: var(--white);
 }
 
 /* Checkbox */
@@ -399,7 +409,7 @@ input[type="radio"]:checked ~ .checkmark--radio {
   top: 2px;
   width: 7px;
   height: 12px;
-  border: solid #3a3737;
+  border: solid var(--dark);
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -408,23 +418,23 @@ input[type="radio"]:checked ~ .checkmark--radio {
 
 /* File Input*/
 
-#profile-Pic {
+.profile-pic {
   width: 120px;
 }
-#profile-Pic .cls-1 {
-  fill: #fff;
+.profile-pic .cls-1 {
+  fill: var(--white);
 }
 
-#profile-Pic .cls-2 {
-  fill: #f3f3f3;
+.profile-pic .cls-2 {
+  fill: var(--light);
 }
 
-#profile-Pic .cls-3 {
-  fill: #949494;
+.profile-pic .cls-3 {
+  fill: var(--gray);
   fill-rule: evenodd;
 }
 
-#profile-Pic .cls-4 {
+.profile-pic .cls-4 {
   mask: url(#mask);
 }
 
@@ -476,12 +486,14 @@ input[type="radio"]:checked ~ .checkmark--radio {
 
 .btn__primary,
 .btn__standard {
-  color: white;
+  color: var(--white);
 }
 
 .btn__primary {
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin-bottom: 0.6em;
+  font-weight: 700;
+  padding: 1.2em 1.5em;
 }
 
 .btn__standard,
@@ -494,32 +506,37 @@ input[type="radio"]:checked ~ .checkmark--radio {
 }
 
 .btn--lighter {
-  background: linear-gradient(to bottom, #949494, #949494);
+  background: linear-gradient(to bottom, var(--gray), var(--gray));
 }
 
 .btn--lighter:hover {
-  background: linear-gradient(to bottom, #6c6868, #3a3737);
+  background: linear-gradient(to bottom, var(--lighter), var(--dark));
 }
 
 .btn--dark {
-  background: linear-gradient(to bottom, #3a3737, #3a3737);
+  background: linear-gradient(to bottom, var(--dark), var(--dark));
 }
 
 .btn--dark:hover {
-  background: linear-gradient(to bottom, #6c6868, #3a3737);
-  color: #ec5959;
+  background: linear-gradient(to bottom, var(--lighter), var(--dark));
+  color: var(--warning);
 }
 
 .btn__plain:hover {
-  color: #ec5959;
+  color: var(--warning);
+}
+
+.btn__errors,
+.btn__errors .form__notes-desc {
+  text-align: center;
 }
 
 .btn__errors {
-  text-align: center;
   margin-bottom: 1em;
 }
 
 /* User */
+
 .form__users {
   width: 100%;
   padding: 4rem 5rem;
@@ -554,7 +571,7 @@ input[type="radio"]:checked ~ .checkmark--radio {
   content: "";
   height: 2px;
   width: 77%;
-  background-color: #979797;
+  background-color: var(--lighter);
   position: absolute;
   left: 106px;
   right: 0;
@@ -567,13 +584,13 @@ input[type="radio"]:checked ~ .checkmark--radio {
 }
 
 .user p {
-  color: #949494;
+  color: var(--gray);
   transition: all ease-in-out 0.3s;
   margin: 0.4em 0;
 }
 
 p.user__name {
-  color: #3a3737;
+  color: var(--dark);
 }
 
 .user_more_state {
@@ -591,7 +608,7 @@ p.user__name {
   cursor: pointer;
   display: inline-block;
   padding: 0.5em;
-  color: #3a3737;
+  color: var(--dark);
   font-size: 3.2em;
   transition: all ease-in-out 0.3s;
 }
@@ -612,7 +629,7 @@ p.user__name {
 
 .user_more_state:hover ~ .user__more .user_more_trigger,
 .user_more_state:hover ~ .user__description p {
-  color: #ec5959;
+  color: var(--warning);
 }
 
 /*RESPONSIVE */
@@ -634,14 +651,6 @@ p.user__name {
     justify-content: space-between;
   }
 
-  .form__input-notes {
-    margin-top: 0;
-  }
-
-  .form__input-container {
-    margin-top: 2.6em;
-  }
-
   .menu-icon {
     display: none;
   }
@@ -658,10 +667,12 @@ p.user__name {
   .form__input-notes {
     text-align: right;
     margin-bottom: 0;
+    margin-top: 0;
   }
 
   .form__input-container {
     padding: 0 5rem;
+    margin-top: 2.6em;
   }
 }
 
@@ -675,6 +686,6 @@ p.user__name {
 /* Desktop */
 @media only screen and (min-width: 1220px) {
   .main {
-    background-image: url("/images/Desktop\ \(>1220\)\ Background.jpg");
+    background-image: url("/images/Desktop (>1220) Background.jpg");
   }
 }

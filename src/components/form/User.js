@@ -1,7 +1,6 @@
 import React from "react";
-
-const getAge = birthDate =>
-  Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e10);
+// eslint-disable-next-line
+import { formatBirthday, getAge } from "../utilities";
 
 const User = ({
   name,
@@ -13,13 +12,14 @@ const User = ({
   newsletter
 }) => {
   const profileStyle = { backgroundImage: "url(" + image + ")" };
+  const imgDefault = { backgroundImage: "url(/images/user.svg)" }; // if image fail
 
   return (
     <div className="user">
       <input type="checkbox" className="user_more_state" id={name} />
 
       <div className="user__image">
-        <div style={profileStyle} />
+        <div style={typeof image === "string" ? profileStyle : imgDefault} />
       </div>
 
       <div className="user__description">
@@ -28,20 +28,23 @@ const User = ({
 
         <div className="user__info">
           <p className="user__info-data user_more_target">
-            <span>Age:</span>
-            {getAge(birthday)}
+            <span>Age:</span> {birthday.getAge()}{" "}
           </p>
           <p className="user__info-data user_more_target">
-            <span>Brithday:</span> {birthday}
+            <span>Brithday:</span> {birthday.formatBirthday()}
           </p>
           <p className="user__info-data user_more_target">
             <span>Zipcode:</span> {zipcode}
           </p>
           <p className="user__info-data user_more_target">
-            <span>Gender:</span> {gender}
+            <span>Gender:</span>{" "}
+            {(gender === "F" && "Female") ||
+              (gender === "M" && "Male") ||
+              (gender === "non-binary" && "Non-Binary") ||
+              (gender === "other" && "Other")}
           </p>
           <p className="user__info-data user_more_target">
-            <span>Newsletter:</span> {newsletter ? "Yes" : "no"}
+            <span>Newsletter:</span> {newsletter ? "Yes" : "No"}
           </p>
         </div>
       </div>
