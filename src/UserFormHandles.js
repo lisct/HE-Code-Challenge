@@ -24,6 +24,11 @@ const UserFormHandle = (initial_state, validate) => {
               setApiErrors("The email address is alredy registered");
             } else {
               setApiData(res);
+
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+              });
             }
           })
           .catch(error => setApiErrors(error));

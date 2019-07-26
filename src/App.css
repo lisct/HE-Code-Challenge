@@ -202,6 +202,36 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.25);
+
+  -webkit-animation-name: opacityAnim; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: opacityAnim;
+  animation-duration: 1s;
+  transition: all ease-in-out 1s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes opacityAnim {
+  from {
+    opacity: 0;
+    margin-top: 40px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+/* Standard syntax */
+@keyframes opacityAnim {
+  from {
+    opacity: 0;
+    margin-top: 30px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
 }
 
 .form__header {
